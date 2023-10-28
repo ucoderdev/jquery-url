@@ -1,6 +1,6 @@
 # jQuery URL
 
-Usefull jQuery functions for handling URL.
+Useful jQuery functions for handling URL.
 
 ### Requirements
 
