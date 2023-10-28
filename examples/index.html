@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery URL Manipulation</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <h1>jQuery URL</h1>
+  <p>Usefull jQuery functions for handling URL.</p>
+  <p>
+    <a href="https://jquery.com/download/" target="_blank">jQuery</a> is required.
+  </p>
+
+  <hr>
+
+  <h1>Documentation</h1>
+
+  <h2>URL change</h2>
+
+  <!-- URL change -->
+  <div>
+    <p>
+      You can change the URL by calling the function <code>$.urlChange(pathname)</code>.
+      <br>
+      Parameters:
+      <br>
+      - <b>pathname</b> is required and must be a URL pathname.
+    </p>
+
+    <div class="flexbox">
+      <p>
+        <b>Example:</b>
+      </p>
+
+      <button type="button" onclick="$.urlChange('/page/about');">
+        URL: /page/about
+      </button>
+
+      <button type="button" onclick="$.urlChange('/blog/posts?page=2');">
+        URL: /blog/posts?page=2
+      </button>
+    </div>
+
+    <hr>
+
+    <p>
+      Also you can easly change the URL by using the <b>HTML attribute</b> <code>data-url-change="/pathname"</code>
+      <br>
+      Need a <b>callback</b>? Use <code>data-callback="functionName()"</code>.
+    </p>
+
+    <div class="flexbox">
+      <p>
+        <b>Example:</b>
+      </p>
+
+      <button type="button" data-url-change="/page/about">
+        URL: /page/about
+      </button>
+
+      <button type="button" data-url-change="/blog/posts?page=2" data-callback="alert('Hello callback!');">
+        URL: /blog/posts?page=2 (with callback)
+      </button>
+    </div>
+  </div>
+  <!-- /URL change -->
+
+  <hr>
+
+  <h2>URL pathname change</h2>
+
+  <!-- URL pathname change -->
+  <div>
+    <p>
+      You can change the URL pathname by calling the function <code>$.addPathname(pathname, queryParams)</code>.
+      <br>
+      Parameters:
+      <br>
+      - <b>pathname</b> (URL pathname) [string | required]
+      <br>
+      - <b>queryParams</b> (Query parameters) [object].
+    </p>
+
+    <div class="flexbox">
+      <p>
+        <b>Example:</b>
+      </p>
+
+      <button type="button" onclick="$.addPathname('/page/about');">
+        URL: /page/about
+      </button>
+
+      <button type="button" onclick="$.addPathname('/blog/posts', {page: 1, sort: 'desc'});">
+        URL: /blog/posts?page=1&sort=desc
+      </button>
+    </div>
+
+    <hr>
+
+    <p>
+      Also you can easly change the URL pathname by using the <b>HTML attribute</b> <code>data-url-pathname="/pathname"</code>
+      <br>
+      Need a <b>callback</b>? Use <code>data-callback="functionName()"</code>.
+    </p>
+
+    <div class="flexbox">
+      <p>
+        <b>Example:</b>
+      </p>
+
+      <button type="button" data-url-pathname="/page/about">
+        URL: /page/about
+      </button>
+
+      <button type="button" data-url-pathname="/blog/posts" data-params="page=1&sort=desc" data-callback="alert('Hello callback!');">
+        URL: /blog/posts?page=1&sort=desc (with callback)
+      </button>
+    </div>
+  </div>
+  <!-- /URL pathname change -->
+
+  <hr>
+
+  <h2>Query parameters</h2>
+  <h3>Add or replace query parameter</h3>
+
+  <!-- Add or replace query parameters -->
+  <div>
+    <p>
+      You can <b>add</b> or <b>replace</b> the query parameter by calling the function <code>$.addUrlParam(key, value)</code>.
+      <br>
+      Parameters:
+      <br>
+      - <b>key</b> (Query parameter key) [string | required]
+      <br>
+      - <b>value</b> (Query parameter value) [string | numeric | required].
+    </p>
+
+    <div class="flexbox">
+      <p>
+        <b>Example:</b>
+      </p>
+
+      <button type="button" onclick="$.addUrlParam('color', 'red');">
+        Color: red
+      </button>
+
+      <button type="button" onclick="$.addUrlParam('color', 'blue');">
+        Color: blue
+      </button>
+
+      <button type="button" onclick="$.addUrlParam('animal', 'bear');">
+        Animal: bear
+      </button>
+
+      <button type="button" onclick="$.addUrlParam('animal', 'horse');">
+        Animal: horse
+      </button>
+    </div>
+
+    <hr>
+
+    <p>
+      Also you can easly <b>add</b> or <b>replace</b> the query parameter by using the <b>HTML attribute</b> 
+      <code>data-url="add-param" data-key="animal" data-value="lion"</code>
+      <br>
+      Need a <b>callback</b>? Use <code>data-callback="functionName()"</code>.
+    </p>
+
+    <div class="flexbox">
+      <p>
+        <b>Example:</b>
+      </p>
+
+      <button type="button" data-url="add-param" data-key="color" data-value="white">
+        Color: white
+      </button>
+
+      <button type="button" data-url="add-param" data-key="animal" data-value="lion" data-callback="alert('Lion says: harrr')">
+        Animal: lion (with callback)
+      </button>
+    </div>
+  </div>
+  <!-- /Add or replace query parameters -->
+
+  <hr>
+
+  <h3>Get all query parameters</h3>
+
+  <!-- Get all query parameters -->
+  <div>
+    <p>
+      You can <b>get all</b> query parameters by calling the function <code>$.getUrlParams(url)</code>.
+      <br>
+      Parameters:
+      <br>
+      - <b>url</b> (By default: current URL) [string]
+    </p>
+
+    <div class="flexbox">
+      <p>
+        <b>Example:</b>
+      </p>
+
+      <button type="button" onclick="console.log($.getUrlParams());">
+        Show all current params in the console
+      </button>
+
+      <button type="button" onclick="console.log($.getUrlParams('id=1&sort=asc'));">
+        Show params from custom string in console
+      </button>
+    </div>
+  </div>
+  <!-- /Get all query parameters -->
+
+  <hr>
+
+  <h3>Get a single query parameter</h3>
+
+  <!-- Get a single query parameter -->
+  <div>
+    <p>
+      You can get <b>single</b> query parameter by calling the function <code>$.getUrlParam(key)</code>.
+      <br>
+      Parameters:
+      <br>
+      - <b>key</b> (Query parameter key) [string | required]
+    </p>
+
+    <div class="flexbox">
+      <p>
+        <b>Example:</b>
+      </p>
+
+      <button type="button" onclick="console.log($.getUrlParam('color'));">
+        Show query string in console
+      </button>
+    </div>
+  </div>
+  <!-- /Get a single query parameter -->
+
+  <hr>
+
+  <h3>Delete query parameter</h3>
+
+  <!-- Delete query parameters -->
+  <div>
+    <p>
+      You can <b>delete</b> a query parameter by calling the function <code>$.removeUrlParam(key)</code>.
+      <br>
+      Parameters:
+      <br>
+      - <b>key</b> (Query parameter key) [string | required]
+    </p>
+
+    <div class="flexbox">
+      <p>
+        <b>Example:</b>
+      </p>
+
+      <button type="button" onclick="$.removeUrlParam('color');">
+        Remove: color
+      </button>
+
+      <button type="button" onclick="$.removeUrlParam('animal');">
+        Remove: animal
+      </button>
+    </div>
+
+    <hr>
+
+    <p>
+      Also you can easly <b>delete</b> a query parameter by using the <b>HTML attribute</b> 
+      <code>data-url="remove-param" data-key="color"</code>
+      <br>
+      Need a <b>callback</b>? Use <code>data-callback="functionName()"</code>.
+    </p>
+
+    <div class="flexbox">
+      <p>
+        <b>Example:</b>
+      </p>
+
+      <button type="button" data-url="remove-param" data-key="color">
+        Remove: color
+      </button>˝
+
+      <button type="button" data-url="remove-param" data-key="animal" data-callback="alert('Hello callback!')">
+        Remove: animal (width callback)
+      </button>˝
+    </div>
+  </div>
+  <!-- /Delete query parameters -->
+
+  <hr>
+
+  <h3>Remove all query parameter</h3>
+
+  <!-- Remove all query parameter -->
+  <div>
+    <p>
+      You can <b>remove all</b> query parameters by calling the function <code>$.setUrlParams(null)</code>.
+    </p>
+
+    <div class="flexbox">
+      <p>
+        <b>Example:</b>
+      </p>
+
+      <button type="button" onclick="$.setUrlParams(null);">
+        Remove all params
+      </button>
+    </div>
+
+    <hr>
+
+    <p>
+      Also you can easly <b>remove all</b> a query parameters by using the <b>HTML attribute</b> <code>data-url="remove-all-params"</code>
+      <br>
+      Need a <b>callback</b>? Use <code>data-callback="functionName()"</code>.
+    </p>
+
+    <div class="flexbox">
+      <p>
+        <b>Example:</b>
+      </p>
+
+      <button type="button" data-url="remove-all-params">
+        Remove all params
+      </button>
+
+      <button type="button" data-url="remove-all-params" data-callback="alert('Hello callback!');">
+        Remove all params (callback)
+      </button>
+    </div>
+  </div>
+  <!-- /Remove all query parameter -->
+
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script src="../jquery.url.js"></script>
+</body>
+
+</html>
